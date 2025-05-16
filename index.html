@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spice Haven - Premium Herbs & Spices</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+
+        :root {
+            --primary-color: #5a7247;
+            --secondary-color: #d4a762;
+            --light-color: #f8f9fa;
+            --dark-color: #343a40;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        .navbar {
+            background-color: var(--primary-color);
+        }
+        
+        .navbar-brand {
+            font-weight: 700;
+        }
+        
+        .nav-link {
+            color: white !important;
+        }
+        
+        .nav-link:hover {
+            color: var(--secondary-color) !important;
+        }
+        
+        #hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('./media/spice-hero-bg.png');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 120px 0;
+            text-align: center;
+        }
+        
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+        }
+        
+        .btn-primary {
+            background-color: var(--secondary-color);
+            border-color: var(--secondary-color);
+            color: var(--dark-color);
+            font-weight: 600;
+        }
+        
+        .btn-primary:hover {
+            background-color: #c09555;
+            border-color: #c09555;
+        }
+        
+        .section-title {
+            color: var(--primary-color);
+            margin-bottom: 40px;
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--secondary-color);
+        }
+        
+        .card {
+            border: none;
+            border-radius: 10px;
+            overflow: hidden;
+            transition: transform 0.3s;
+            margin-bottom: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .card-img-top {
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .card-title {
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+        
+        .price {
+            color: var(--secondary-color);
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+        
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 50px 0 20px;
+        }
+        
+        .footer-logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--secondary-color);
+            margin-bottom: 20px;
+            display: inline-block;
+        }
+        
+        .footer-links h5 {
+            color: var(--secondary-color);
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+        }
+        
+        .footer-links ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: #adb5bd;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: var(--secondary-color);
+            text-decoration: none;
+        }
+        
+        .social-icons a {
+            color: white;
+            font-size: 1.5rem;
+            margin-right: 15px;
+            transition: color 0.3s;
+        }
+        
+        .social-icons a:hover {
+            color: var(--secondary-color);
+        }
+        
+        .carousel-item {
+            height: 400px;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .carousel-caption {
+            background-color: rgba(0, 0, 0, 0.6);
+            border-radius: 10px;
+            padding: 20px;
+        }
+        
+        .news-title {
+            color: var(--secondary-color);
+            font-weight: 600;
+        }
+
+         /* Recipe Video Section */
+        #recipe-video {
+            padding: 80px 0;
+            background-color: #f9f5f0;
+        }
+        
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%; 
+            height: 0;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        .video-content {
+            padding: 0 30px;
+        }
+        
+        .video-content h3 {
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+        
+        .video-content p {
+            color: #666;
+            margin-bottom: 25px;
+        }
+        
+        .ingredients-list {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        
+        .ingredients-list li {
+            padding: 8px 0;
+            border-bottom: 1px solid #eee;
+            color: #555;
+        }
+        
+        .ingredients-list li:before {
+            content: "•";
+            color: var(--secondary-color);
+            font-weight: bold;
+            display: inline-block;
+            width: 1em;
+            margin-left: -1em;
+        }
+
+		.video-container video {
+		    width: 100%;
+		    height: auto;
+		    border-radius: 10px;
+		    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+		    display: block;
+		}
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <i class="fas fa-leaf me-2"></i>Spice Haven
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Shop</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Recipes</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Contact</a>
+                    </li>
+                </ul>
+                <div class="ms-3 d-flex">
+                    <a href="#" class="btn btn-outline-light me-2"><i class="fas fa-search"></i></a>
+                    <a href="#" class="btn btn-outline-light me-2"><i class="fas fa-user"></i></a>
+                    <a href="#" class="btn btn-outline-light"><i class="fas fa-shopping-cart"></i></a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="hero">
+        <div class="container">
+            <h1 class="hero-title">Discover the World of Flavors</h1>
+            <p class="hero-subtitle">Premium quality herbs and spices sourced directly from their native regions</p>
+            <a href="#" class="btn btn-primary btn-lg me-2">Shop Now</a>
+            <a href="#" class="btn btn-outline-light btn-lg">Learn More</a>
+        </div>
+    </section>
+
+	<!-- Recipe Video Section -->
+	<section id="recipe-video">
+	    <div class="container">
+	        <div class="row align-items-center">
+	            <div class="col-lg-6 mb-4 mb-lg-0">
+	                <div class="video-container">
+	                    <!-- Local video file -->
+	                    <video controls poster="./media/not-available.jpg" autoplay muted loop>
+	                        <source src="./media/home-vid.mp4" type="video/mp4">
+	                        <source src="videos/recipe-video.webm" type="video/webm">
+	                        Your browser does not support the video tag.
+	                    </video>
+	                </div>
+	            </div>
+	            <div class="col-lg-6">
+	                <div class="video-content">
+	                    <h3>Featured Recipe: Golden Turmeric Latte</h3>
+	                    <p>Learn how to make our signature anti-inflammatory turmeric latte using our premium organic turmeric powder and other aromatic spices. This comforting drink is perfect for chilly mornings or as an afternoon pick-me-up.</p>
+	                    
+	                    <h5>Ingredients:</h5>
+	                    <ul class="ingredients-list">
+	                        <li>1 cup milk of your choice</li>
+	                        <li>1 tsp Spice Haven organic turmeric powder</li>
+	                        <li>½ tsp Spice Haven cinnamon powder</li>
+	                        <li>¼ tsp Spice Haven ginger powder</li>
+	                        <li>Pinch of black pepper (enhances turmeric absorption)</li>
+	                        <li>1 tsp honey or maple syrup (optional)</li>
+	                    </ul>
+	                    
+	                    <a href="#" class="btn btn-primary">Get the Full Recipe</a>
+	                    <a href="#" class="btn btn-outline-secondary ms-2">Shop Ingredients</a>
+	                </div>
+	            </div>
+	        </div>
+	    </div>
+	</section>
+
+    <!-- Carousel Section -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <h2 class="text-center section-title">News & Updates</h2>
+            <div id="newsCarousel" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-indicators">
+                    <button type="button" data-bs-target="#newsCarousel" data-bs-slide-to="0" class="active"></button>
+                    <button type="button" data-bs-target="#newsCarousel" data-bs-slide-to="1"></button>
+                    <button type="button" data-bs-target="#newsCarousel" data-bs-slide-to="2"></button>
+                </div>
+                <div class="carousel-inner rounded">
+                    <div class="carousel-item active" style="background-image: url('./media/spice-banner.jpg');">
+                        <div class="carousel-caption">
+                            <h3 class="news-title">New Arrivals!</h3>
+                            <p>Discover our freshly imported saffron from Kashmir and vanilla beans from Madagascar.</p>
+                            <a href="#" class="btn btn-primary">View Products</a>
+                        </div>
+                    </div>
+                    <div class="carousel-item" style="background-image: url('./media/sale-banner.jpg');">
+                    	<div class="carousel-caption">
+                            <h3 class="news-title">Summer Sale!</h3>
+                            <p>Get 40% off on all organic herbs and spices this week only. Use code: SPICE20</p>
+                            <a href="#" class="btn btn-primary">Shop Now</a>
+                        </div>
+                    </div>
+                    <div class="carousel-item" style="background-image: url('./media/recipe-banner.png');">
+                        <div class="carousel-caption">
+                            <h3 class="news-title">Recipe Contest</h3>
+                            <p>Submit your best recipe using our spices and win a year's supply of premium products!</p>
+                            <a href="#" class="btn btn-primary">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#newsCarousel" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#newsCarousel" data-bs-slide="next">
+                    <span class="carousel-control-next-icon"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- Product Highlights -->
+    <section class="py-5">
+        <div class="container">
+            <h2 class="text-center section-title">Our Premium Selection</h2>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="card">
+                        <img src="./media/saffron.jpg" class="card-img-top" alt="Saffron">
+                        <div class="card-body">
+                            <h5 class="card-title">Premium Saffron</h5>
+                            <p class="card-text">Hand-picked saffron threads from Kashmir with intense aroma and color.</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="price">₱649.99 / gram</span>
+                                <a href="#" class="btn btn-sm btn-primary">Add to Cart</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card">
+                        <img src="./media/vanilla.jpg" class="card-img-top" alt="Vanilla Beans">
+                        <div class="card-body">
+                            <h5 class="card-title">Madagascar Vanilla Beans</h5>
+                            <p class="card-text">Plump, moist vanilla beans with rich, complex flavor perfect for baking.</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="price">₱249.90 / bean</span>
+                                <a href="#" class="btn btn-sm btn-primary">Add to Cart</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card">
+                        <img src="./media/cinnamon.jpg" class="card-img-top" alt="Cinnamon">
+                        <div class="card-body">
+                            <h5 class="card-title">Ceylon Cinnamon Sticks</h5>
+                            <p class="card-text">True cinnamon with delicate, sweet flavor and numerous health benefits.</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="price">₱479.89 / 100g</span>
+                                <a href="#" class="btn btn-sm btn-primary">Add to Cart</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-4">
+                <a href="#" class="btn btn-primary btn-lg">View All Products</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-4 mb-md-0">
+                    <span class="footer-logo"><i class="fas fa-leaf me-2"></i>Spice Haven</span>
+                    <p>Providing the finest quality herbs and spices from around the world since 2010. Our mission is to bring authentic flavors to your kitchen.</p>
+                    <div class="social-icons">
+                        <a href="https://www.facebook.com/"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/"><i class="fab fa-instagram"></i></a>
+                        <a href="https://x.com/"><i class="fab fa-twitter"></i></a>
+                        <a href="https://www.pinterest.com/"><i class="fab fa-pinterest"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-2 col-6 mb-4 mb-md-0">
+                    <div class="footer-links">
+                        <h5>Quick Links</h5>
+                        <ul>
+                            <li><a href="#">Home</a></li>
+                            <li><a href="#">Shop</a></li>
+                            <li><a href="#">About Us</a></li>
+                            <li><a href="#">Recipes</a></li>
+                            <li><a href="#">Blog</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-2 col-6 mb-4 mb-md-0">
+                    <div class="footer-links">
+                        <h5>Categories</h5>
+                        <ul>
+                            <li><a href="#">Herbs</a></li>
+                            <li><a href="#">Spices</a></li>
+                            <li><a href="#">Seasonings</a></li>
+                            <li><a href="#">Teas</a></li>
+                            <li><a href="#">Gift Sets</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="footer-links">
+                        <h5>Contact Us</h5>
+                        <ul class="list-unstyled">
+                            <li><i class="fas fa-map-marker-alt me-2"></i> 276 Emerald Street  Ugong Norte, Mandaluyong City</li>
+                            <li><i class="fas fa-phone me-2"></i> (02) 456-7890</li>
+                            <li><i class="fas fa-envelope me-2"></i> info@spicehaven.com</li>
+                            <li><i class="fas fa-clock me-2"></i> Mon-Fri: 9AM-6PM</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <hr class="mt-4 mb-3" style="border-color: #495057;">
+            <div class="row">
+                <div class="col-md-6 text-center text-md-start">
+                    <p class="mb-0">&copy; 2025 Spice Haven. All rights reserved.</p>
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    <p class="mb-0">
+                        <a href="#" class="text-white me-3">Privacy Policy</a>
+                        <a href="#" class="text-white">Terms of Service</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
